@@ -1,30 +1,66 @@
-# Python
+# ===== Python =====
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
 *.so
+*.egg-info/
+build/
 
 # Virtual Environment
 .venv/
 venv/
 env/
 
-# FastAPI
+# Python tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
+coverage/
+
+# ===== FastAPI / Database =====
 *.db
+*.sqlite
 *.sqlite3
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
 
-# Environment Variables
+# ===== Environment & Secrets =====
+# 注意：用具体名而非 .env.*，避免误伤 .env.example
 .env
-.env.*
+.env.local
+.env.*.local
+!.env.example
+*.key
+*.pem
+*.crt
 
-# Logs
+# ===== Logs =====
 *.log
 logs/
 
-# Node.js / Vue
+# ===== Crawler artifacts =====
+# 爬虫抓取的原始网页/截图等大文件，不入库；保留 .gitkeep 以维持目录
+backend/storage/*
+!backend/storage/.gitkeep
+
+# Playwright
+playwright-report/
+test-results/
+.playwright/
+
+# ===== Node.js / Vue =====
 node_modules/
 dist/
+.vite/
+*.local
 
 # Package Managers
 npm-debug.log*
@@ -32,22 +68,20 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# IDE
-.vscode/
-.idea/
-
-# Operating System
-.DS_Store
-Thumbs.db
-
-# Docker
+# ===== Docker =====
 *.pid
 
-# Build
-coverage/
-htmlcov/
+# ===== IDE / Editor =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# Cache
-.pytest_cache/
-.mypy_cache/
-.cache/
+# ===== Operating System =====
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ===== WorkBuddy (AI 助手本地状态/会话/日志) =====
+.workbuddy/
