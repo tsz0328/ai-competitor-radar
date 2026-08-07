@@ -1,0 +1,104 @@
+/* 全局控制主题颜色 */
+:root {
+  /* 主题色 */
+  --app-color-primary: #0070f3;
+  --app-color-success: #00b96b;
+  --app-color-warning: #faad14;
+  --app-color-danger:  #ff4d4f;
+
+  /* 文字色（亮色） */
+  --app-text-1: #303133;   /* primary  */
+  --app-text-2: #606266;   /* regular  */
+  --app-text-3: #909399;   /* secondary*/
+  --app-text-4: #a8abb2;   /* placeholder */
+  --app-text-5: #c0c4cc;   /* disabled */
+
+  /* 背景色 */
+  --app-bg-page: #f5f7fa;
+  --app-bg-base:  #ffffff;
+
+  /* 边框色 */
+  --app-border: #dcdfe6;
+  --app-border-light: #e4e7ed;
+  --app-border-lighter: #ebeef5;
+
+/* ---- 填充色 ---- */
+  --app-fill:         #f0f2f5;
+  --app-fill-light:   #f5f7fa;
+  --app-fill-blank:   #ffffff;
+
+  /* 圆角 / 字号 / 阴影 */
+  --app-radius: 100vmax;
+  --app-font-base: 1.5vmax;
+  --app-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* ============ 映射给 Element Plus（暗黑时不用改这段） ============ */
+:root {
+  --el-color-primary: var(--app-color-primary);
+  --el-color-success: var(--app-color-success);
+  --el-color-warning: var(--app-color-warning);
+  --el-color-danger:  var(--app-color-danger);
+
+  --el-text-color-primary:   var(--app-text-1);
+  --el-text-color-regular:   var(--app-text-2);
+  --el-text-color-secondary: var(--app-text-3);
+  --el-text-color-placeholder: var(--app-text-4);
+  --el-text-color-disabled:  var(--app-text-5);
+
+  --el-bg-color-page: var(--app-bg-page);
+  --el-bg-color:      var(--app-bg-base);
+  --el-border-color:  var(--app-border);
+
+  --el-border-radius-base: var(--app-radius);
+  --el-font-size-base:     var(--app-font-base);
+  --el-box-shadow:         var(--app-shadow);
+}
+
+/* ============ 暗黑模式：只改 --app-* ============ */
+html.dark {
+  --app-text-1: #E5EAF3;
+  --app-text-2: #CFD3DC;
+  --app-text-3: #A3A6AD;
+  --app-text-4: #8D9095;
+
+  --app-bg-page: #141414;
+  --app-bg-base:  #1d1e1f;
+  --app-border:  #434343;
+}
+
+
+/* 全局盒子样式 */
+:root{
+  --app-card-border-radius: 100vmax;
+  --app-card-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* 全局覆盖 Element Plus 默认按钮尺寸 */
+.el-button {
+  --el-font-size-base: 1.5vmax;
+  --el-border-radius-base: 100vmax;
+  --btn-padding-y: 1vh;
+  --btn-padding-x: 1.6vw;
+  --scale: 1;
+
+  height: auto;
+  font-size: var(--el-font-size-base);
+  border-radius: var(--el-border-radius-base);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+}
+
+/* small / default / large 之间保持比例关系 */
+.el-button--small {
+  --scale: 0.8;
+  font-size: calc(var(--el-font-size-base) * var(--scale));
+  padding: calc(var(--btn-padding-y) * var(--scale))
+    calc(var(--btn-padding-x) * var(--scale));
+}
+
+.el-button--large {
+  --scale: 1.2;
+  font-size: calc(var(--el-font-size-base) * var(--scale));
+  padding: calc(var(--btn-padding-y) * var(--scale))
+    calc(var(--btn-padding-x) * var(--scale));
+}

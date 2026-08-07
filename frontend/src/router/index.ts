@@ -1,10 +1,29 @@
-import { createRouter, createWebHistory } from 'vue-router'
+// 引入两个vue-router的函数
+import { createRouter, createWebHistory } from "vue-router";
 
+// 引入路由组件
+import LandingLayout from "@/layouts/LandingLayout.vue";
+import LandingPage from "@/views/LandingPage.vue";
+
+// 创建路由实例，传入一个配置对象
 const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    { path: '/', name: 'Home', component: () => import('@/views/LandingPage.vue') },
-  ],
+    // 使用vue-router的createWebHistory函数创建一个路由历史记录
+    history: createWebHistory(),
+    // 定义路由规则
+    routes: [
+        {
+            path: "/",
+            component: LandingLayout,
+            // 嵌套子路由
+            children: [
+                {
+                    path: "",
+                    component: LandingPage,
+                }
+            ]
+        }
+    ]
 })
 
-export default router
+// 导出路由实例
+export default router;
