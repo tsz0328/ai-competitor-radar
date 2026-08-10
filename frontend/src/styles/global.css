@@ -1,80 +1,98 @@
-/* 全局控制主题颜色 */
-:root {
-  /* 主题色 */
-  --app-color-primary: #0070f3;
-  --app-color-success: #00b96b;
-  --app-color-warning: #faad14;
-  --app-color-danger:  #ff4d4f;
-
-  /* 文字色（亮色） */
-  --app-text-1: #303133;   /* primary  */
-  --app-text-2: #606266;   /* regular  */
-  --app-text-3: #909399;   /* secondary*/
-  --app-text-4: #a8abb2;   /* placeholder */
-  --app-text-5: #c0c4cc;   /* disabled */
-
-  /* 背景色 */
-  --app-bg-page: #f5f7fa;
-  --app-bg-base:  #ffffff;
-
-  /* 边框色 */
-  --app-border: #dcdfe6;
-  --app-border-light: #e4e7ed;
-  --app-border-lighter: #ebeef5;
-
-/* ---- 填充色 ---- */
-  --app-fill:         #f0f2f5;
-  --app-fill-light:   #f5f7fa;
-  --app-fill-blank:   #ffffff;
-
-  /* 圆角 / 字号 / 阴影 */
-  --app-radius: 100vmax;
-  --app-font-base: 1.5vmax;
-  --app-shadow: 0 2px 12px rgba(0,0,0,0.08);
+/* 全局控制页面边距 */
+body {
+  margin: 0;
+}
+/* 全局控制滚动行为 */
+html {
+  scroll-behavior: smooth;
 }
 
-/* ============ 映射给 Element Plus（暗黑时不用改这段） ============ */
+/* 全局控制主题颜色 */
+:root {
+  /* ========== 基准色（OKLCH） 亮度 | 色度 | 色相 */
+  --app-color-blue:   oklch(55% 0.22 245);  /* 主蓝：明亮、饱和适中 */
+  --app-color-white-blue:  oklch(100% 0 245);     /* 蓝相白 */
+  --app-color-purple: oklch(55% 0.22 285);  /* 主紫：明亮、饱和适中 */
+  --app-color-white-purple:  oklch(100% 0 285);     /* 紫相白 */
+  --app-color-red: oklch(55% 0.22 30);  /* 主红：明亮、饱和适中 */
+  --app-color-white-red:  oklch(100% 0 30);     /* 红相白 */
+  --app-color-pink: oklch(55% 0.22 325);  /* 主粉：明亮、饱和适中 */
+  --app-color-white-pink:  oklch(100% 0 325);     /* 粉相白 */
+  --app-color-black:  oklch(18% 0.02 260); /* 深蓝黑，比纯黑更透气 */
+  --app-color-white:  oklch(100% 0 0);     /* 中性白 */
+  --app-color-gray:   oklch(55% 0.05 260); /* 中性灰 */
+  --app-color-green:  oklch(65% 0.18 145); /* 中性绿 */
+  --app-color-white-green:  oklch(100% 0 145); /* 绿相白 */
+
+  /* ========== 派生强调色 ========== */
+  --app-color-accent: color-mix(in oklch, var(--app-color-blue) 60%, var(--app-color-purple));
+  --app-color-accent-light: color-mix(in oklch, var(--app-color-accent) 25%, var(--app-color-white));
+  --app-color-accent-dark: color-mix(in oklch, var(--app-color-accent) 70%, var(--app-color-black));
+
+  /* ========== 阶梯色 ========== */
+  --app-color-blue-light-5: color-mix(in oklch, var(--app-color-blue) 10%,  var(--app-color-white-blue));
+  --app-color-blue-light-4: color-mix(in oklch, var(--app-color-blue) 20%, var(--app-color-white-blue));
+  --app-color-blue-light-3: color-mix(in oklch, var(--app-color-blue) 40%, var(--app-color-white-blue));
+  --app-color-blue-light-2: color-mix(in oklch, var(--app-color-blue) 60%, var(--app-color-white-blue));
+  --app-color-blue-light-1: color-mix(in oklch, var(--app-color-blue) 80%, var(--app-color-white-blue));
+  --app-color-blue-dark-1: color-mix(in oklch, var(--app-color-blue) 80%, var(--app-color-black));
+  --app-color-blue-dark-2: color-mix(in oklch, var(--app-color-blue) 60%, var(--app-color-black));
+  --app-color-blue-dark-3: color-mix(in oklch, var(--app-color-blue) 40%, var(--app-color-black));
+  --app-color-blue-dark-4: color-mix(in oklch, var(--app-color-blue) 20%, var(--app-color-black));
+  --app-color-blue-dark-5: color-mix(in oklch, var(--app-color-blue) 10%, var(--app-color-black));
+
+  --app-color-purple-light-5: color-mix(in oklch, var(--app-color-purple) 10%,  var(--app-color-white-purple));
+  --app-color-purple-light-4: color-mix(in oklch, var(--app-color-purple) 20%, var(--app-color-white-purple));
+  --app-color-purple-light-3: color-mix(in oklch, var(--app-color-purple) 40%, var(--app-color-white-purple));
+  --app-color-purple-light-2: color-mix(in oklch, var(--app-color-purple) 60%, var(--app-color-white-purple));
+  --app-color-purple-light-1: color-mix(in oklch, var(--app-color-purple) 80%, var(--app-color-white-purple));
+  --app-color-purple-dark-1: color-mix(in oklch, var(--app-color-purple) 80%, var(--app-color-black));
+  --app-color-purple-dark-2: color-mix(in oklch, var(--app-color-purple) 60%, var(--app-color-black));
+  --app-color-purple-dark-3: color-mix(in oklch, var(--app-color-purple) 40%, var(--app-color-black));
+  --app-color-purple-dark-4: color-mix(in oklch, var(--app-color-purple) 20%, var(--app-color-black));
+  --app-color-purple-dark-5: color-mix(in oklch, var(--app-color-purple) 10%, var(--app-color-black));
+  
+  /* 主题色 */
+  --app-color-primary: var(--app-color-blue);
+  --app-color-success: var(--app-color-green);
+  --app-color-warning: oklch(75% 0.16 75);
+  --app-color-danger:  oklch(60% 0.22 25);
+
+  /* 文字色（亮色） */
+  --app-text-color-primary:     oklch(20% 0.02 260);
+  --app-text-color-regular:     var(--app-color-black);
+  --app-text-color-secondary:   oklch(55% 0.04 260);
+  --app-text-color-placeholder: oklch(70% 0.03 260);
+  --app-text-color-disabled:    oklch(75% 0.02 260);
+}
+
+/* ============ 映射给 Element Plus 的主题色 ============ */
 :root {
   --el-color-primary: var(--app-color-primary);
   --el-color-success: var(--app-color-success);
   --el-color-warning: var(--app-color-warning);
   --el-color-danger:  var(--app-color-danger);
 
-  --el-text-color-primary:   var(--app-text-1);
-  --el-text-color-regular:   var(--app-text-2);
-  --el-text-color-secondary: var(--app-text-3);
-  --el-text-color-placeholder: var(--app-text-4);
-  --el-text-color-disabled:  var(--app-text-5);
-
-  --el-bg-color-page: var(--app-bg-page);
-  --el-bg-color:      var(--app-bg-base);
-  --el-border-color:  var(--app-border);
-
-  --el-border-radius-base: var(--app-radius);
-  --el-font-size-base:     var(--app-font-base);
-  --el-box-shadow:         var(--app-shadow);
+  --el-text-color-primary: var(--app-text-color-primary);
+  --el-text-color-regular: var(--app-text-color-regular);
+  --el-text-color-secondary: var(--app-text-color-secondary);
+  --el-text-color-placeholder: var(--app-text-color-placeholder);
+  --el-text-color-disabled: var(--app-text-color-disabled);
 }
 
-/* ============ 暗黑模式：只改 --app-* ============ */
+/* ============ 暗黑模式 ============ */
 html.dark {
-  --app-text-1: #E5EAF3;
-  --app-text-2: #CFD3DC;
-  --app-text-3: #A3A6AD;
-  --app-text-4: #8D9095;
-
-  --app-bg-page: #141414;
-  --app-bg-base:  #1d1e1f;
-  --app-border:  #434343;
+  /* 翻转黑白基准 */
+  --app-color-white: oklch(18% 0.02 260);   /* 暗色下的"白" → 深蓝黑 */
+  --app-color-black: oklch(96% 0.01 260);   /* 暗色下的"黑" → 近白 */
+  /* 主色变亮一点，在暗底上更醒目 */
+  --app-color-blue: oklch(65% 0.20 255);
+  /* 文字色自动翻转（因为它们从 --app-color-black 派生） */
+  /* 背景色自动翻转（因为它们从 --app-color-white 派生） */
+  /* 阶梯色全部自动适配，无需逐个重写 */
 }
 
-
-/* 全局盒子样式 */
-:root{
-  --app-card-border-radius: 100vmax;
-  --app-card-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
-
-/* 全局覆盖 Element Plus 默认按钮尺寸 */
+/* 全局覆盖 Element Plus 默认按钮字号、圆角、内边距 */
 .el-button {
   --el-font-size-base: 1.5vmax;
   --el-border-radius-base: 100vmax;
@@ -86,6 +104,9 @@ html.dark {
   font-size: var(--el-font-size-base);
   border-radius: var(--el-border-radius-base);
   padding: var(--btn-padding-y) var(--btn-padding-x);
+}
+.el-button + .el-button {
+  margin-left: 1.2vw;
 }
 
 /* small / default / large 之间保持比例关系 */

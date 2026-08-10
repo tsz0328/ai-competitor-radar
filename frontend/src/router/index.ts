@@ -2,8 +2,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // 引入路由组件
-import LandingLayout from "@/layouts/LandingLayout.vue";
 import LandingPage from "@/views/LandingPage.vue";
+import Login from "@/views/Login.vue";
 
 // 创建路由实例，传入一个配置对象
 const router = createRouter({
@@ -13,15 +13,14 @@ const router = createRouter({
     routes: [
         {
             path: "/",
-            component: LandingLayout,
-            // 嵌套子路由
-            children: [
-                {
-                    path: "",
-                    component: LandingPage,
-                }
-            ]
-        }
+            component: LandingPage,
+            name: "LandingPage"
+        },
+        {
+            path: "/login",
+            component: Login,
+            name: "Login"
+        },
     ]
 })
 
