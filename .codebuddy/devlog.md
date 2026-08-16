@@ -146,3 +146,10 @@
   - 十字线 `drawRadialSegment`：删掉恒等于 1 的 `radialFactor` 和未使用的 `finalIntensity`，改为沿"圆心→边缘"线段做线性渐变（圆心端 `alpha=0.25+0.75*intensity`，边缘端 `alpha=1`），真正呈现径向渐变。
 - 结果：0 lint 错误。径向渐变（内暗外亮）真正显示；头部白紫闪烁消失。
 - 新增约定（重要）：**扫线头部切割分支的"已扫过部分"必须 `strokeStyle = gradA`**——这是同一分支第二次出"构建了渐变却赋错 strokeStyle"的坑（第一次是 2026-08-11「修复扫线头部闪烁」前序版本），重构此段时需特别核对。另：`gridColor` 的 `t` 一旦算出就必须在插值里用上，否则负值会越界。
+
+### 2026-08-15 — 确立类型契约规范：跨层共享类型统一放 `src/types/`
+- 背景：`Dashboard.vue` 报两条 TS 错误（1192 模块无默认导出、2339 属性不存在）。根因是 `TrendChart.vue` 在 `<script setup>` 内写了 `export interface TrendPoint`——SFC 编译规则禁止 `<script setup>` 块内出现任何 ES export 语句（含纯类型导出），导致组件默认导出无法生成。
+- 决策：采用方案 B——将 `TrendPoint` 抽离到独立文件 `src/types/trend.ts`，组件（`TrendChart.vue`）与视图（`Dashboard.vue`）均通过 `import type { TrendPoint } from '@/types/trend'` 引用。优于方案 A（双 script 块）的理由：关注点分离、避免双块写法的坑、类型后续会被 API 层复用、避免从 `.vue` 文件导类型的隐性问题。
+- 改动：新建 `src/types/trend.ts`；`TrendChart.vue` 删除 export interface 改为 import type；`Dashboard.vue` 类型导入路径同步切换。
+- 新增约定：**凡是会被组件、视图、API 中两层及以上共用的类型，一律放 `src/types/*.ts`，禁止在 `.vue` 文件内 export 类型。**
+- 备注：Volar/ts-server 对 `.vue` 模块形状有缓存，改完后若编辑器仍报旧错误，重启 TS Server 即可。

@@ -6,23 +6,29 @@ body {
 html {
   scroll-behavior: smooth;
 }
+/* 全局控制盒模型，让 width/height 包含 padding 和 border */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 /* 全局控制主题颜色 */
 :root {
   /* ========== 基准色（OKLCH） 亮度 | 色度 | 色相 */
-  --app-color-blue:   oklch(55% 0.22 245);  /* 主蓝：明亮、饱和适中 */
+  --app-color-blue:   oklch(55% 0.22 245);        /* 主蓝：明亮、饱和适中 */
   --app-color-white-blue:  oklch(100% 0 245);     /* 蓝相白 */
-  --app-color-purple: oklch(55% 0.22 285);  /* 主紫：明亮、饱和适中 */
-  --app-color-white-purple:  oklch(100% 0 285);     /* 紫相白 */
-  --app-color-red: oklch(55% 0.22 30);  /* 主红：明亮、饱和适中 */
-  --app-color-white-red:  oklch(100% 0 30);     /* 红相白 */
-  --app-color-pink: oklch(55% 0.22 325);  /* 主粉：明亮、饱和适中 */
+  --app-color-purple: oklch(55% 0.22 285);        /* 主紫：明亮、饱和适中 */
+  --app-color-white-purple:  oklch(100% 0 285);   /* 紫相白 */
+  --app-color-red: oklch(55% 0.22 30);            /* 主红：明亮、饱和适中 */
+  --app-color-white-red:  oklch(100% 0 30);       /* 红相白 */
+  --app-color-green:  oklch(65% 0.18 145);        /* 中性绿 */
+  --app-color-white-green:  oklch(100% 0 145);    /* 绿相白 */
+  --app-color-orange:  oklch(65% 0.18 35);        /* 中性橙 */
+  --app-color-white-orange:  oklch(100% 0 35);     /* 橙相白 */
+  --app-color-pink: oklch(55% 0.22 325);          /* 主粉：明亮、饱和适中 */
   --app-color-white-pink:  oklch(100% 0 325);     /* 粉相白 */
-  --app-color-black:  oklch(18% 0.02 260); /* 深蓝黑，比纯黑更透气 */
-  --app-color-white:  oklch(100% 0 0);     /* 中性白 */
-  --app-color-gray:   oklch(55% 0.05 260); /* 中性灰 */
-  --app-color-green:  oklch(65% 0.18 145); /* 中性绿 */
-  --app-color-white-green:  oklch(100% 0 145); /* 绿相白 */
+  --app-color-black:  oklch(18% 0.02 260);        /* 深蓝黑，比纯黑更透气 */
+  --app-color-gray:   oklch(55% 0.05 260);        /* 中性灰 */
+  --app-color-white:  oklch(100% 0 0);            /* 中性白 */
 
   /* ========== 派生强调色 ========== */
   --app-color-accent: color-mix(in oklch, var(--app-color-blue) 60%, var(--app-color-purple));
@@ -51,6 +57,39 @@ html {
   --app-color-purple-dark-3: color-mix(in oklch, var(--app-color-purple) 40%, var(--app-color-black));
   --app-color-purple-dark-4: color-mix(in oklch, var(--app-color-purple) 20%, var(--app-color-black));
   --app-color-purple-dark-5: color-mix(in oklch, var(--app-color-purple) 10%, var(--app-color-black));
+
+  --app-color-red-light-5: color-mix(in oklch, var(--app-color-red) 10%,  var(--app-color-white-red));
+  --app-color-red-light-4: color-mix(in oklch, var(--app-color-red) 20%, var(--app-color-white-red));
+  --app-color-red-light-3: color-mix(in oklch, var(--app-color-red) 40%, var(--app-color-white-red));
+  --app-color-red-light-2: color-mix(in oklch, var(--app-color-red) 60%, var(--app-color-white-red));
+  --app-color-red-light-1: color-mix(in oklch, var(--app-color-red) 80%, var(--app-color-white-red));
+  --app-color-red-dark-1: color-mix(in oklch, var(--app-color-red) 80%, var(--app-color-black));
+  --app-color-red-dark-2: color-mix(in oklch, var(--app-color-red) 60%, var(--app-color-black));
+  --app-color-red-dark-3: color-mix(in oklch, var(--app-color-red) 40%, var(--app-color-black));
+  --app-color-red-dark-4: color-mix(in oklch, var(--app-color-red) 20%, var(--app-color-black));
+  --app-color-red-dark-5: color-mix(in oklch, var(--app-color-red) 10%, var(--app-color-black));
+
+  --app-color-green-light-5: color-mix(in oklch, var(--app-color-green) 10%,  var(--app-color-white-green));
+  --app-color-green-light-4: color-mix(in oklch, var(--app-color-green) 20%, var(--app-color-white-green));
+  --app-color-green-light-3: color-mix(in oklch, var(--app-color-green) 40%, var(--app-color-white-green));
+  --app-color-green-light-2: color-mix(in oklch, var(--app-color-green) 60%, var(--app-color-white-green));
+  --app-color-green-light-1: color-mix(in oklch, var(--app-color-green) 80%, var(--app-color-white-green));
+  --app-color-green-dark-1: color-mix(in oklch, var(--app-color-green) 80%, var(--app-color-black));
+  --app-color-green-dark-2: color-mix(in oklch, var(--app-color-green) 60%, var(--app-color-black));
+  --app-color-green-dark-3: color-mix(in oklch, var(--app-color-green) 40%, var(--app-color-black));
+  --app-color-green-dark-4: color-mix(in oklch, var(--app-color-green) 20%, var(--app-color-black));
+  --app-color-green-dark-5: color-mix(in oklch, var(--app-color-green) 10%, var(--app-color-black));
+
+  --app-color-orange-light-5: color-mix(in oklch, var(--app-color-orange) 10%,  var(--app-color-white-orange));
+  --app-color-orange-light-4: color-mix(in oklch, var(--app-color-orange) 20%, var(--app-color-white-orange));
+  --app-color-orange-light-3: color-mix(in oklch, var(--app-color-orange) 40%, var(--app-color-white-orange));
+  --app-color-orange-light-2: color-mix(in oklch, var(--app-color-orange) 60%, var(--app-color-white-orange));
+  --app-color-orange-light-1: color-mix(in oklch, var(--app-color-orange) 80%, var(--app-color-white-orange));
+  --app-color-orange-dark-1: color-mix(in oklch, var(--app-color-orange) 80%, var(--app-color-black));
+  --app-color-orange-dark-2: color-mix(in oklch, var(--app-color-orange) 60%, var(--app-color-black));
+  --app-color-orange-dark-3: color-mix(in oklch, var(--app-color-orange) 40%, var(--app-color-black));
+  --app-color-orange-dark-4: color-mix(in oklch, var(--app-color-orange) 20%, var(--app-color-black));
+  --app-color-orange-dark-5: color-mix(in oklch, var(--app-color-orange) 10%, var(--app-color-black));
   
   /* 主题色 */
   --app-color-primary: var(--app-color-blue);

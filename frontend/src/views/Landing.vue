@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Radar } from "@/components/Icons";
 import { ref, onMounted, onUnmounted } from "vue";
-
 import {
   Star,
   CaretRight,
@@ -1082,14 +1081,16 @@ onUnmounted(() => observer?.disconnect());
   padding: var(--btn-padding-y) var(--btn-padding-x) var(--btn-padding-y)
     calc(2 * var(--btn-padding-x));
   background-color: transparent;
+  transition: all 0.2s ease;
 }
 
 .hero-actions-right:hover {
   background-color: color-mix(
     in oklch,
-    var(--app-color-purple) 5%,
+    var(--app-color-blue-light-5) 10%,
     transparent
   );
+  border-color: var(--app-color-white);
 }
 
 .hero-actions-right:active {

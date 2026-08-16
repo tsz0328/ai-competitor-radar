@@ -26,7 +26,9 @@ const registerForm = reactive({
 });
 
 // TODO(里程碑4): 登录提交 → authApi.login() 拿 JWT 存 Pinia
-const onLogin = () => {};
+const onLogin = () => {
+  router.replace({ name: "AppLayout" });
+};
 // TODO(里程碑4): 注册提交 → authApi.register()
 const onRegister = () => {};
 // TODO: 第三方登录（GitHub OAuth / 微信扫码 / 邮箱验证码）
